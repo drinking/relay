@@ -2,6 +2,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { default as NextImage } from "next/image";
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
+
 
 
 const ImageWithText = () => {
@@ -84,12 +86,18 @@ const ImageWithText = () => {
     }, [imageUrl, text]);
 
     return (
-        <div className='bg-white'>
-            {!canvasImageSrc && <canvas ref={canvasRef} style={{ border: '1px solid black', transform: 'scale(0.5,0.5)', transformOrigin: '0 0' }} />}
-            {canvasImageSrc &&
-                <NextImage src={canvasImageSrc} alt="Background Image" layout="fill" objectFit="cover" quality={100} />
-            }
-        </div>
+
+        <>
+            <Suspense>
+                <div className='bg-white'>
+                    {!canvasImageSrc && <canvas ref={canvasRef} style={{ border: '1px solid black', transform: 'scale(0.5,0.5)', transformOrigin: '0 0' }} />}
+                    {canvasImageSrc &&
+                        <NextImage src={canvasImageSrc} alt="Background Image" layout="fill" objectFit="cover" quality={100} />
+                    }
+                </div>
+            </Suspense>
+        </>
+
     );
 }
 
