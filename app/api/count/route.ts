@@ -75,11 +75,11 @@ export async function GET(request: Request) {
     // }
 
     if (ipNumberMap.get(ip)) {
-        return Response.json({ no: ipNumberMap.get(ip), ip: ip });
+        return Response.json({ no: ipNumberMap.get(ip) });
     } else {
         NO += 1;
         ipNumberMap.set(ip, NO);
-        return Response.json({ no: NO });
+        return Response.json({ no: NO ,ip: ip});
     }
 
 
