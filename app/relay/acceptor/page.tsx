@@ -60,20 +60,22 @@ const ImageWithText = () => {
 
 
                     // Set the font and text styles
-                    ctx.font = '38px Microsoft YaHei';
+                    ctx.font = '40px Microsoft YaHei';
                     ctx.fillStyle = 'black';
                     // ctx.strokeStyle = 'black';
                     // ctx.lineWidth = 1;
 
 
-                    const textStart = (canvas.width - 150) / 2;
+                    const textStart = (canvas.width - 170) / 2;
                     const textYStart = canvas.height / 7;
-
                     // Write the text on the image
-                    ctx.fillText(text, textStart, textYStart);
-                    // ctx.strokeText(text, textStart, textYStart);
+                    ctx.fillText('您是第', textStart, textYStart);
+                    ctx.fillStyle = 'red';
+                    ctx.fillText(String(NO), textStart + 120, textYStart);
+                    ctx.fillStyle = 'black';
+                    ctx.fillText('位', textStart +140 , textYStart);
 
-                    const textStart2 = (canvas.width - 370) / 2;
+                    const textStart2 = (canvas.width - 450) / 2;
                     ctx.fillText('电动自行车用车安全承诺人', textStart2, textYStart + 60);
                     // ctx.strokeText('电动自行车用车安全承诺人', textStart2, textYStart+40);
 

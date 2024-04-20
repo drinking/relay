@@ -18,6 +18,10 @@ db.run(`
   )
 `);
 
+interface IPAddress {
+    ip: string;
+}
+
 const logIP = (ip: string, db: Database): Promise<RunResult> => {
     return new Promise((resolve, reject) => {
         db.run(
@@ -36,16 +40,33 @@ const logIP = (ip: string, db: Database): Promise<RunResult> => {
     });
 };
 
+const loadSeq = (): Promise<IPAddress[]> => {
+    return new Promise((resolve, reject) => {
+        db.all("SELECT DISTINCT ip from requests", [], (err, rows: IPAddress[]) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(rows)
+            }
+        });
+    })
+}
+
+var NO = -1;
 const ipNumberMap: Map<string, number> = new Map<string, number>();
-var NO = 0;
 
 export async function GET(request: Request) {
 
-    if (NO == 0) {
-        // TODO load map from dabatase
+    if (NO == -1) {
+        const rows = await loadSeq()
+        NO = rows.length;
+        for (let i = 0; i < rows.length; i++) {
+            const item = rows[i];
+            ipNumberMap.set(item.ip, i + 1);
+        }
     }
 
-    const ip = request.headers.get('X-Custom-IP') ?? ""
+    const ip = request.headers.get('x-custom-ip') ?? request.headers.get('x-forwarded-for') ?? ""
 
     try {
         logIP(ip, db);

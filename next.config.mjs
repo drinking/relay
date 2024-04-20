@@ -4,6 +4,14 @@ const nextConfig = {
     experimental: {
         missingSuspenseWithCSRBailout: false,
     },
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "**.vintage.love",
+            },
+        ],
+    },
 };
 
 export default nextConfig;
