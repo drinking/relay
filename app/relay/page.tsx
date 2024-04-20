@@ -23,14 +23,12 @@ export default function Home() {
             router.push('/relay/acceptor?no=' + data.no)
           })
         })
-
+        
       }}>
         我承诺
       </button>
 
-
       <div>Copyright@ 2018 Jiaye Co.Ltd.沪ICP备18003803号-1</div>
-
     </main>
   );
 }
