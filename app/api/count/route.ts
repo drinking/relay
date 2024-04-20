@@ -75,7 +75,7 @@ export async function GET(request: Request) {
     // }
 
     if (ipNumberMap.get(ip)) {
-        return Response.json({ no: ipNumberMap.get(ip) });
+        return Response.json({ no: ipNumberMap.get(ip), ip: ip });
     } else {
         NO += 1;
         ipNumberMap.set(ip, NO);
