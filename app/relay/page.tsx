@@ -18,7 +18,7 @@ export default function Home() {
 
             <Image
                 alt="Image Alt"
-                src="https://static.vintage.love/images/origin/mcWKGPaa158IDiKV3I0Xdoxb8UrPRmuvaeYO232a.png"
+                src="https://static.vintage.love/images/middle/mcWKGPaa158IDiKV3I0Xdoxb8UrPRmuvaeYO232a.png"
                 className="pt-10 pl-10 pr-10"
                 width={360}
                 height={300}
@@ -28,7 +28,7 @@ export default function Home() {
             <button onClick={handleClick}>
                 <Image
                     alt="Image Alt"
-                    src="https://static.vintage.love/images/origin/dPlzCANus6Uynp8Zd4OJrEm8Y4D7X7BJwoue6T0o.png"
+                    src="https://static.vintage.love/images/middle/dPlzCANus6Uynp8Zd4OJrEm8Y4D7X7BJwoue6T0o.png"
                     width={200}
                     height={100}
                     objectFit="contain" // Scale your image down to fit into the container
@@ -40,7 +40,7 @@ export default function Home() {
 
             <Image
                 alt="Image Alt"
-                src="https://static.vintage.love/images/origin/kLqrej0bJanryyIBmVhzsPZNYIVw7cRIgm0n7icS.png"
+                src="https://static.vintage.love/images/middle/kLqrej0bJanryyIBmVhzsPZNYIVw7cRIgm0n7icS.png"
                 style={{ alignSelf: 'end' }}
                 width={300}
                 height={300}
