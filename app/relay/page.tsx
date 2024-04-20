@@ -16,7 +16,6 @@ export default function Home() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between bg-[#ea5504]">
 
-
             <Image
                 alt="Image Alt"
                 src="/static/part1.png"

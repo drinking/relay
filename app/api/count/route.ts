@@ -45,8 +45,7 @@ export async function GET(request: Request) {
         // TODO load map from dabatase
     }
 
-    console.log(request.headers.get('x-forwarded-for'))
-    const ip = request.headers.get('x-forwarded-for') ?? ""
+    const ip = request.headers.get('X-Custom-IP') ?? ""
 
     try {
         logIP(ip, db);
