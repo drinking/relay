@@ -18,7 +18,7 @@ export default function Home() {
 
             <Image
                 alt="Image Alt"
-                src="https://static.vintage.love/images/middle/mcWKGPaa158IDiKV3I0Xdoxb8UrPRmuvaeYO232a.png"
+                src="https://static.vintage.love/images/middle/NMK4ZBMRYBBCQtsr0AsrHEmcBUeJUhCIvltjWAdp.png"
                 className="pt-10 pl-10 pr-10"
                 width={360}
                 height={300}
@@ -28,7 +28,7 @@ export default function Home() {
             <button onClick={handleClick}>
                 <Image
                     alt="Image Alt"
-                    src="https://static.vintage.love/images/middle/dPlzCANus6Uynp8Zd4OJrEm8Y4D7X7BJwoue6T0o.png"
+                    src="https://static.vintage.love/images/middle/51L1ZC4lzAyZggtDl164l6UNGBv5kqq1OpEDfSQJ.png"
                     width={200}
                     height={100}
                     objectFit="contain" // Scale your image down to fit into the container
@@ -37,31 +37,14 @@ export default function Home() {
 
             </button>
 
-
             <Image
                 alt="Image Alt"
-                src="https://static.vintage.love/images/middle/kLqrej0bJanryyIBmVhzsPZNYIVw7cRIgm0n7icS.png"
+                src="https://static.vintage.love/images/middle/GOfUUs3UMxdzMZHIflqK7uBanjHAeN0ikQdyb5KJ.png"
                 style={{ alignSelf: 'end' }}
                 width={300}
                 height={300}
                 objectFit="contain" // Scale your image down to fit into the container
             />
-
-
-            {/* <button className="text-white-900 absolute" onClick={() => {
-                // TODO get local cookie
-                // request from remote
-                fetch('/api/count').then(res => {
-                    res.json().then(data => {
-                        router.push('/relay/acceptor?no=' + data.no)
-                    })
-                })
-
-            }}>
-                我承诺
-            </button> */}
-
-            {/* <div>Copyright@ 2018 Jiaye Co.Ltd.沪ICP备18003803号-1</div> */}
         </main>
     );
 }
