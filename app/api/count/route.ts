@@ -2,7 +2,21 @@
 import { Database, RunResult } from 'sqlite3';
 
 // Open the database connection
-var db:Database;
+const db = new Database('/relay/relay.db', (err) => {
+    if (err) {
+        console.error(err.message);
+    } else {
+        console.log('Connected to the SQLite database.');
+    }
+});
+
+db.run(`
+  CREATE TABLE IF NOT EXISTS requests (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ip TEXT,
+    count INTEGER DEFAULT 0
+  )
+`);
 
 interface IPAddress {
     ip: string;
@@ -43,24 +57,7 @@ const ipNumberMap: Map<string, number> = new Map<string, number>();
 
 export async function GET(request: Request) {
 
-    if (NO == -1) {
-
-        db = new Database('/relay/relay.db', (err) => {
-            if (err) {
-                console.error(err.message);
-            } else {
-                console.log('Connected to the SQLite database.');
-            }
-        });
-        
-        db.run(`
-          CREATE TABLE IF NOT EXISTS requests (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            ip TEXT,
-            count INTEGER DEFAULT 0
-          )
-        `);
-
+    if (request.headers.get('x-custom-ip') && NO == -1) {
         const rows = await loadSeq()
         NO = rows.length;
         for (let i = 0; i < rows.length; i++) {
