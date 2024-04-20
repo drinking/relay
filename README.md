@@ -36,7 +36,5 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 
-docker run --cpus=0.3 -d -p 80:80 -v ~/nginx/html:/usr/share/nginx/html -v ~/nginx/nginx.conf:/etc/nginx/nginx.conf -v ~/nginx/log:/var/log/nginx/ --name nginx --network my-network nginx
-
-docker run --cpus=0.3 -d -p 80:80 -v ~/nginx/html:/usr/share/nginx/html -v ~/nginx/nginx.conf:/etc/nginx/nginx.conf -v ~/nginx/log:/var/log/nginx/ --name 8f89600635f1 --network my-network nginx
+sudo chown -R 1001:1001 relaydb
 
