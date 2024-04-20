@@ -84,7 +84,7 @@ const ImageWithText = () => {
                 }
             }
         }
-    }, [imageUrl, text]);
+    }, [imageUrl]);
 
     return (
 
