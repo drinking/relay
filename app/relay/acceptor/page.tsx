@@ -9,10 +9,9 @@ import { Suspense } from 'react'
 const ImageWithText = () => {
 
     const searchParams = useSearchParams()
-    const NO = "100" //searchParams.get('no')
+    const NO = searchParams.get('no')
 
     const [imageUrl, setImageURL] = useState('/static/bg2.png');
-    const [text, setText] = useState('您是第' + NO + '位');
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [canvasImageSrc, setCanvasImageSrc] = useState<string>('');
