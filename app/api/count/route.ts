@@ -86,15 +86,14 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
 
-    const backup = Object.fromEntries(ipNumberMap);
-    console.log('backup', backup); 
-    const json = await request.json();
-    NO = 0;
+    const backup = Object.fromEntries(ipNumberMap);    
     ipNumberMap.clear();
-    for (let i = 0; i < json.length; i++) {
-        const item = json[i];
-        ipNumberMap.set(item.ip, i+1);
+    const json = await request.json();
+    const entries = Object.entries(json.ipNumberMap);
+    NO = entries.length;
+    for (let [key, value] of entries) {
+        ipNumberMap.set(key, value as number);
     }
-    
+
     return Response.json({ status: 'success', backup: backup });
 }
