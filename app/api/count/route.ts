@@ -97,6 +97,7 @@ export async function POST(request: Request) {
 
     if (json.clear) {
         ipNumberMap.clear();
+        NO = 0;
         return Response.json({ status: 'success', backup: backup });
     }
 
