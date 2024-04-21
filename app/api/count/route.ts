@@ -57,15 +57,6 @@ const ipNumberMap: Map<string, number> = new Map<string, number>();
 
 export async function GET(request: Request) {
 
-    if (request.headers.get('x-custom-ip') && NO == -1) {
-        const rows = await loadSeq()
-        NO = rows.length;
-        for (let i = 0; i < rows.length; i++) {
-            const item = rows[i];
-            ipNumberMap.set(item.ip, i + 1);
-        }
-    }
-
     const ip = request.headers.get('x-custom-ip') ?? request.headers.get('x-forwarded-for') ?? ""
 
     try {
@@ -87,17 +78,37 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
 
     const json = await request.json();
-    if(json.view) {
-        return Response.json({ status: 'success', ipNumberMap: ipNumberMap  });
+    const backup = Object.fromEntries(ipNumberMap);
+    if (json.view) {
+        return Response.json({ status: 'success', ipNumberMap: backup });
     }
 
-    const backup = Object.fromEntries(ipNumberMap);    
-    ipNumberMap.clear();
-    const entries = Object.entries(json.ipNumberMap);
-    NO = entries.length;
-    for (let [key, value] of entries) {
-        ipNumberMap.set(key, value as number);
+    if (json.reload) {
+        ipNumberMap.clear();
+        const rows = await loadSeq()
+        NO = rows.length;
+        for (let i = 0; i < rows.length; i++) {
+            const item = rows[i];
+            ipNumberMap.set(item.ip, i + 1);
+        }
+        const backup = Object.fromEntries(ipNumberMap);
+        return Response.json({ status: 'success', ipNumberMap: backup });
     }
 
-    return Response.json({ status: 'success', backup: backup });
+    if (json.clear) {
+        ipNumberMap.clear();
+        return Response.json({ status: 'success', backup: backup });
+    }
+
+    if (json.fill) {
+        const entries = Object.entries(json.ipNumberMap);
+        NO = entries.length;
+        for (let [key, value] of entries) {
+            ipNumberMap.set(key, value as number);
+        }
+        return Response.json({ status: 'success', backup: backup });
+
+    }
+
+
 }
