@@ -86,14 +86,13 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
 
-    const backup = Object.fromEntries(ipNumberMap);    
-    ipNumberMap.clear();
     const json = await request.json();
-
     if(json.view) {
         return Response.json({ status: 'success', ipNumberMap: ipNumberMap  });
     }
 
+    const backup = Object.fromEntries(ipNumberMap);    
+    ipNumberMap.clear();
     const entries = Object.entries(json.ipNumberMap);
     NO = entries.length;
     for (let [key, value] of entries) {
