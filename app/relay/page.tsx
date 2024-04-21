@@ -74,7 +74,7 @@ export default function Home() {
                     ctx.fillStyle = 'red';
                     ctx.fillText(String(NO), textStart + 140, textYStart);
                     ctx.fillStyle = 'black';
-                    ctx.fillText('位', textStart + 140 + String(NO).length * 25, textYStart);
+                    ctx.fillText('位', textStart + 140 + String(NO).length * 28, textYStart);
 
                     const textStart2 = (canvas.width - 530) / 2;
                     ctx.fillText('电动自行车用车安全承诺人', textStart2, textYStart + 70);
